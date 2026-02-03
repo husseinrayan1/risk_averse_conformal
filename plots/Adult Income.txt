@@ -1,0 +1,9 @@
+We evaluate marginal RAC and group-conditional RAC on the UCI Adult Income dataset, using sex (Female/Male) to define calibration groups. The predictive model is trained without access to the group attribute to isolate the effect of calibration. We sweep the miscoverage level α ∈ {0.05, 0.10, 0.15, 0.20} and report overall and group-wise miscoverage, as well as tail decision risk measured via CVaR-5% of realized utilities.
+
+Across all α values, marginal RAC satisfies the global miscoverage constraint but exhibits increasing disparity between groups as α grows. In contrast, group-conditional RAC aligns group-wise miscoverage rates closely with the target α, eliminating systematic over- and under-coverage across groups.
+
+More importantly, marginal RAC concentrates tail risk on the under-covered group, leading to substantially worse worst-case outcomes. At α = 0.10, the worst-group CVaR-5% under marginal RAC is −4.39, compared to −3.82 under group-conditional RAC, representing a significant reduction in extreme negative outcomes. This improvement comes at the cost of a modest reduction in mean utility, consistent with the tradeoff between average performance and worst-case safety.
+
+For larger α values (α ≥ 0.15), both methods approach maximal loss, reflecting the inherently aggressive decision regime. Group-conditional calibration occasionally produces empty prediction sets due to reduced per-group calibration size; we treat these cases as maximal uncertainty by reverting to the full label space.
+
+Overall, these results demonstrate that group-conditional risk-averse calibration meaningfully reduces concentrated tail risk while preserving coverage guarantees, validating its practical advantage over marginal calibration in safety-critical decision settings

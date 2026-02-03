@@ -1,0 +1,12 @@
+Experiment: Adult Income (UCI) — Group-Conditional Risk-Averse Calibration
+
+We evaluate marginal RAC and our group-conditional extension on the UCI Adult Income dataset (binary classification: income >50K).
+We define two demographic groups using the sex attribute (Female/Male),and train a probabilistic classifier without using sex as an
+input feature to isolate the effect of calibration. RAC constructs prediction sets via split-conformal thresholding,
+and actions are selected using the risk-averse decision rule a* = argmax min u(a,y) under an asymmetric utility matrix
+penalizing false approvals more than false denials. We report overall and group-wise miscoverage, prediction set size,
+mean utility, and tail utility (CVaR-5%, i.e., mean of the worst 5% realized utilities). Results show that marginal
+RAC meets the global miscoverage target but exhibits substantial group disparity, while group-conditional RAC equalizes
+group-wise miscoverage and improves worst-tail utility for the disadvantaged group,
+at the cost of a small drop in mean utility. In rare cases group-conditional calibration produces empty prediction sets due to per-group calibration scarcity.
+we treat these as maximum uncertainty by falling back to the full label space.
